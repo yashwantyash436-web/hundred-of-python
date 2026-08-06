@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smart Bus AI</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+</head>
+
+<body>
+
+<div class="app">
+
+  <div class="sidebar">
+    <h2>🚌 Smart Bus AI</h2>
+
+    <label>From</label>
+    <select id="from"></select>
+
+    <label>To</label>
+    <select id="to"></select>
+
+    <button onclick="findBus()">Find Bus</button>
+    <button onclick="startVoice()">🎤 Voice</button>
+
+    <div id="result">Select route to begin</div>
+  </div>
+
+  <div id="map"></div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
