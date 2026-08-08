@@ -3,6 +3,9 @@ from tkinter import *
 import os 
 import random
 import string
+from tkinter import messagebox
+import pyperclip
+
 
 letters=list(string.ascii_letters)
 numbers=list(string.digits)
@@ -24,6 +27,7 @@ def gen_password():
     random.shuffle(password_list)
     password="".join(password_list)
     password_entry.insert(0,password)
+    pyperclip.copy(password)
     
 # def gen_password():
 #     list_password=[]
@@ -42,14 +46,24 @@ def save_password():
     website=website_entry.get()
     email=email_entry.get()
     password=password_entry.get()
+
     
-    with open("data123.txt",mode="a") as file:
-        file.write(f"{website } | {email} | {password } |||\n")
+    if len(password)==0 or  len(website)==0:
+        messagebox.showinfo(title="OOPS" , message="it cannot be empty!!")
         
-        
-    website_entry.delete(0,END)
-    password_entry.delete(0,END)
-    
+    else:
+
+
+        is_ok=messagebox.askokcancel(title=website ,message=f" the details entered are :\n  Email: {email} \n Password : {password}")
+
+        if is_ok:
+            with open("data123.txt",mode="a") as file:
+                file.write(f"{website } | {email} | {password } |||\n")
+                
+                
+            website_entry.delete(0,END)
+            password_entry.delete(0,END)
+            
     
 
 # ---------------------------- UI SETUP ------------------------------- #
